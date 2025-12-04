@@ -4,7 +4,7 @@ Main class for constructing and manipulating Binary Decision Diagrams
 A BDD is a data structure that represents a boolean function as a directed acyclic graph (DAG).
 """
 
-from typing import List, Set, Dict
+from typing import List, Set, Dict, Optional, Tuple
 from bdd.node import BDDNode, TERMINAL_TRUE, TERMINAL_FALSE
 from bdd.formula import Formula, Variable, Not, And, Or, Implies, Iff
 from bdd.truth_table import Interpretation, TruthTable
@@ -287,9 +287,81 @@ class BDD:
     def __str__(self):
         """User-friendly string representation."""
         return self.__repr__()
+    
+    def reduce(self):
+        """
+        Reduce this BDD using Algorithm 5.3.
+        Modifies the BDD in-place.
+        
+        Returns:
+            Statistics about the reduction
+        """
+        from bdd.reduction import BDDReducer
+        
+        if not self.root:
+            return {'nodes_removed': 0, 'nodes_merged': 0, 'total_reduced': 0}
+        
+        # Count nodes before reduction
+        nodes_before = self.count_nodes()
+        
+        # Perform reduction
+        reducer = BDDReducer()
+        self.root = reducer.reduce(self.root)
+        
+        # Count nodes after reduction
+        nodes_after = self.count_nodes()
+        
+        # Get statistics
+        stats = reducer.get_statistics()
+        stats['nodes_before'] = nodes_before
+        stats['nodes_after'] = nodes_after
+        
+        return stats
+    
+    def is_reduced(self) -> bool:
+        """
+        Check if BDD is in reduced form.
+        
+        Returns:
+            True if BDD has no redundant nodes or isomorphic sub-BDDs
+        """
+        if not self.root:
+            return True
+        
+        visited = set()
+        unique_signatures = set()
+        
+        return self._check_reduced(self.root, visited, unique_signatures)
+    
+    def _check_reduced(self, node: BDDNode, visited: Set[int], 
+                       unique_signatures: Set[Tuple]) -> bool:
+        """Helper to check if BDD is reduced."""
+        if node.id in visited:
+            return True
+        
+        visited.add(node.id)
+        
+        if node.is_terminal:
+            return True
+        
+        # Check Step 1: No redundant nodes
+        if node.low == node.high:
+            return False  # Found redundant node
+        
+        # Check Step 2: No duplicate sub-BDDs
+        signature = (node.label, id(node.low), id(node.high))
+        if signature in unique_signatures:
+            return False  # Found duplicate sub-BDD
+        
+        unique_signatures.add(signature)
+        
+        # Recursively check children
+        return (self._check_reduced(node.low, visited, unique_signatures) and
+                self._check_reduced(node.high, visited, unique_signatures))
 
 
 def create_bdd_from_string(formula_str: str, variable_order: List[str] = None) -> BDD:
+
     """
     Convenience function to create BDD from formula string.
     
@@ -303,3 +375,5 @@ def create_bdd_from_string(formula_str: str, variable_order: List[str] = None) -
     from bdd.formula import FormulaParser
     formula = FormulaParser.parse_formula(formula_str)
     return BDD(formula, variable_order)
+
+
