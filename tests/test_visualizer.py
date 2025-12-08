@@ -14,7 +14,7 @@ from bdd.formula import FormulaParser
 def test_simple_visualization():
     """Test visualizing a simple BDD."""
     if not GRAPHVIZ_AVAILABLE:
-        print("⚠️  Skipping: graphviz not available")
+        print("  Skipping: graphviz not available")
         return
     
     print("\n" + "="*60)
@@ -24,13 +24,13 @@ def test_simple_visualization():
     
     # Visualize (will open image)
     path = visualize_bdd(bdd, filename='test_simple', view=False)
-    print(f"✅ Created visualization: {path}")
+    print(f"  Created visualization: {path}")
 
 
 def test_textbook_example_visualization():
     """Test visualizing the textbook example before and after reduction."""
     if not GRAPHVIZ_AVAILABLE:
-        print("⚠️  Skipping: graphviz not available")
+        print("   Skipping: graphviz not available")
         return
     
     print("\n" + "="*60)
@@ -50,22 +50,22 @@ def test_textbook_example_visualization():
     
     # Visualize unreduced
     path1 = visualize_bdd(bdd_unreduced, filename='textbook_unreduced', view=False)
-    print(f"✅ Created unreduced visualization: {path1}")
+    print(f"  Created unreduced visualization: {path1}")
     
     # Visualize reduced
     path2 = visualize_bdd(bdd_reduced, filename='textbook_reduced', view=False)
-    print(f"✅ Created reduced visualization: {path2}")
+    print(f"  Created reduced visualization: {path2}")
     
     # Compare side-by-side
     path3 = compare_bdds(bdd_unreduced, bdd_reduced, 
                          filename='textbook_comparison', view=False)
-    print(f"✅ Created comparison: {path3}")
+    print(f"  Created comparison: {path3}")
 
 
 def test_tautology_visualization():
     """Visualize a tautology."""
     if not GRAPHVIZ_AVAILABLE:
-        print("⚠️  Skipping: graphviz not available")
+        print("   Skipping: graphviz not available")
         return
     
     print("\n" + "="*60)
@@ -78,13 +78,13 @@ def test_tautology_visualization():
     print(f"Nodes: {bdd.count_nodes()}")
     
     path = visualize_bdd(bdd, filename='tautology', view=False)
-    print(f"✅ Created tautology visualization: {path}")
+    print(f"  Created tautology visualization: {path}")
 
 
 def test_contradiction_visualization():
     """Visualize a contradiction."""
     if not GRAPHVIZ_AVAILABLE:
-        print("⚠️  Skipping: graphviz not available")
+        print("   Skipping: graphviz not available")
         return
     
     print("\n" + "="*60)
@@ -97,13 +97,13 @@ def test_contradiction_visualization():
     print(f"Nodes: {bdd.count_nodes()}")
     
     path = visualize_bdd(bdd, filename='contradiction', view=False)
-    print(f"✅ Created contradiction visualization: {path}")
+    print(f"  Created contradiction visualization: {path}")
 
 
 def test_complex_formula_visualization():
     """Visualize a more complex formula."""
     if not GRAPHVIZ_AVAILABLE:
-        print("⚠️  Skipping: graphviz not available")
+        print("   Skipping: graphviz not available")
         return
     
     print("\n" + "="*60)
@@ -122,13 +122,13 @@ def test_complex_formula_visualization():
     # Compare
     path = compare_bdds(bdd_before, bdd_after, 
                        filename='complex_comparison', view=False)
-    print(f"✅ Created comparison: {path}")
+    print(f"  Created comparison: {path}")
 
 
 def test_all_visualizations_with_view():
     """Create all visualizations and open them."""
     if not GRAPHVIZ_AVAILABLE:
-        print("⚠️  Skipping: graphviz not available")
+        print("   Skipping: graphviz not available")
         return
     
     print("\n" + "="*60)
@@ -144,7 +144,7 @@ def test_all_visualizations_with_view():
     compare_bdds(bdd_unreduced, bdd_reduced, 
                 filename='final_textbook_comparison', view=True)
     
-    print("✅ All visualizations created!")
+    print("  All visualizations created!")
 
 
 if __name__ == "__main__":
@@ -152,7 +152,7 @@ if __name__ == "__main__":
     print("="*60)
     
     if not GRAPHVIZ_AVAILABLE:
-        print("\n⚠️  WARNING: graphviz not installed!")
+        print("\n   WARNING: graphviz not installed!")
         print("Install with: pip install graphviz")
         print("Also ensure system graphviz is installed:")
         print("  - macOS: brew install graphviz")
@@ -169,7 +169,7 @@ if __name__ == "__main__":
         # test_all_visualizations_with_view()
         
         print("\n" + "="*60)
-        print("🎉 All visualization tests passed!")
+        print(" All visualization tests passed!")
         print("\nGenerated files:")
         print("  - test_simple.png")
         print("  - textbook_unreduced.png")

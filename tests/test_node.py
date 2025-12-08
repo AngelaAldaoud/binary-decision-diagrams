@@ -27,7 +27,7 @@ def test_terminal_nodes():
     assert t_node.label == 'T'
     assert f_node.label == 'F'
     
-    print("✅ Terminal nodes test passed")
+    print("  Terminal nodes test passed")
 
 
 def test_variable_nodes():
@@ -40,7 +40,7 @@ def test_variable_nodes():
     assert p_node.low == TERMINAL_FALSE
     assert p_node.high == TERMINAL_TRUE
     
-    print("✅ Variable nodes test passed")
+    print("  Variable nodes test passed")
 
 
 def test_redundant_node():
@@ -53,7 +53,7 @@ def test_redundant_node():
     not_redundant = BDDNode.create_variable('q', TERMINAL_FALSE, TERMINAL_TRUE)
     assert not_redundant.is_redundant() == False
     
-    print("✅ Redundant node test passed")
+    print("  Redundant node test passed")
 
 
 def test_node_equality():
@@ -67,7 +67,7 @@ def test_node_equality():
     t2 = BDDNode.create_terminal(True)
     assert t1.value == t2.value
     
-    print("✅ Node equality test passed")
+    print("  Node equality test passed")
 
 
 def test_node_representation():
@@ -80,7 +80,7 @@ def test_node_representation():
     print(f"Terminal repr: {repr(terminal)}")
     print(f"Variable repr: {repr(variable)}")
     
-    print("✅ Node representation test passed")
+    print("  Node representation test passed")
 
 
 if __name__ == "__main__":
@@ -90,4 +90,4 @@ if __name__ == "__main__":
     test_redundant_node()
     test_node_equality()
     test_node_representation()
-    print("\n🎉 All Node tests passed!")
+    print("\n All Node tests passed!")

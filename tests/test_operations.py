@@ -34,7 +34,7 @@ def test_bdd_and():
     assert bdd_result.evaluate(Interpretation({'p': True, 'q': False})) == False
     assert bdd_result.evaluate(Interpretation({'p': True, 'q': True})) == True
     
-    print("✅ BDD AND test passed")
+    print("  BDD AND test passed")
 
 
 def test_bdd_or():
@@ -56,7 +56,7 @@ def test_bdd_or():
     assert bdd_result.evaluate(Interpretation({'p': True, 'q': False})) == True
     assert bdd_result.evaluate(Interpretation({'p': True, 'q': True})) == True
     
-    print("✅ BDD OR test passed")
+    print("  BDD OR test passed")
 
 
 def test_bdd_not():
@@ -76,7 +76,7 @@ def test_bdd_not():
     assert bdd_result.evaluate(Interpretation({'p': True})) == False
     assert bdd_result.evaluate(Interpretation({'p': False})) == True
     
-    print("✅ BDD NOT test passed")
+    print("  BDD NOT test passed")
 
 
 def test_complex_operation():
@@ -107,7 +107,7 @@ def test_complex_operation():
     assert bdd_result.evaluate(Interpretation({'p': False, 'q': True, 'r': True})) == False
     assert bdd_result.evaluate(Interpretation({'p': True, 'q': True, 'r': True})) == True
     
-    print("✅ Complex operation test passed")
+    print("  Complex operation test passed")
 
 
 def test_equivalence_checking():
@@ -144,7 +144,7 @@ def test_equivalence_checking():
     
     assert equivalent2 == False
     
-    print("✅ Equivalence checking test passed")
+    print("  Equivalence checking test passed")
 
 
 def test_shannon_expansion():
@@ -170,7 +170,7 @@ def test_shannon_expansion():
     # Should be equivalent
     assert are_equivalent(bdd_op, bdd_direct)
     
-    print("✅ Shannon expansion test passed")
+    print("  Shannon expansion test passed")
 
 
 def test_xor_operation():
@@ -192,7 +192,7 @@ def test_xor_operation():
     assert bdd_result.evaluate(Interpretation({'p': True, 'q': False})) == True
     assert bdd_result.evaluate(Interpretation({'p': True, 'q': True})) == False
     
-    print("✅ XOR operation test passed")
+    print("  XOR operation test passed")
 
 
 def test_implies_operation():
@@ -214,7 +214,7 @@ def test_implies_operation():
     assert bdd_result.evaluate(Interpretation({'p': True, 'q': False})) == False
     assert bdd_result.evaluate(Interpretation({'p': True, 'q': True})) == True
     
-    print("✅ IMPLIES operation test passed")
+    print("  IMPLIES operation test passed")
 
 
 def test_satisfiability():
@@ -241,7 +241,7 @@ def test_satisfiability():
     assert bdd_unsat.is_valid() == False
     print("p & ~p is unsatisfiable (contradiction): ✓")
     
-    print("✅ Satisfiability testing passed")
+    print("  Satisfiability testing passed")
 
 
 def test_textbook_operations():
@@ -270,7 +270,7 @@ def test_textbook_operations():
     # Should be equivalent
     assert are_equivalent(bdd_result, bdd_direct)
     
-    print("✅ Textbook operations test passed")
+    print("  Textbook operations test passed")
 
 
 if __name__ == "__main__":
@@ -289,4 +289,4 @@ if __name__ == "__main__":
     test_textbook_operations()
     
     print("\n" + "="*60)
-    print("🎉 All BDD Operations tests passed!")
+    print(" All BDD Operations tests passed!")

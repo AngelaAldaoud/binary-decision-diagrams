@@ -21,7 +21,7 @@ def test_variable():
     assert p.evaluate(interp_false) == False
     assert p.get_variables() == {'p'}
     
-    print(f"✅ Variable test passed: {p}")
+    print(f" Variable test passed: {p}")
 
 
 def test_not():
@@ -35,7 +35,7 @@ def test_not():
     assert not_p.evaluate(interp_true) == False
     assert not_p.evaluate(interp_false) == True
     
-    print(f"✅ NOT test passed: {not_p}")
+    print(f" NOT test passed: {not_p}")
 
 
 def test_and():
@@ -49,7 +49,7 @@ def test_and():
     assert p_and_q.evaluate(Interpretation({'p': False, 'q': True})) == False
     assert p_and_q.evaluate(Interpretation({'p': False, 'q': False})) == False
     
-    print(f"✅ AND test passed: {p_and_q}")
+    print(f" AND test passed: {p_and_q}")
 
 
 def test_or():
@@ -63,7 +63,7 @@ def test_or():
     assert p_or_q.evaluate(Interpretation({'p': False, 'q': True})) == True
     assert p_or_q.evaluate(Interpretation({'p': False, 'q': False})) == False
     
-    print(f"✅ OR test passed: {p_or_q}")
+    print(f"OR test passed: {p_or_q}")
 
 
 def test_complex_formula():
@@ -79,7 +79,7 @@ def test_complex_formula():
     assert formula.evaluate(Interpretation({'p': False, 'q': True, 'r': True})) == True
     assert formula.evaluate(Interpretation({'p': True, 'q': False, 'r': False})) == True
     
-    print(f"✅ Complex formula test passed: {formula}")
+    print(f"Complex formula test passed: {formula}")
 
 
 def test_parser_simple():
@@ -101,7 +101,7 @@ def test_parser_simple():
     not_p = FormulaParser.parse_formula("¬p")
     assert isinstance(not_p, Not)
     
-    print("✅ Simple parser tests passed")
+    print(" Simple parser tests passed")
 
 
 def test_parser_with_parentheses():
@@ -118,7 +118,7 @@ def test_parser_with_parentheses():
     assert formula.evaluate(Interpretation({'p': False, 'q': True, 'r': True})) == True
     assert formula.evaluate(Interpretation({'p': False, 'q': True, 'r': False})) == False
     
-    print(f"✅ Parser with parentheses passed: {formula}")
+    print(f" Parser with parentheses passed: {formula}")
 
 
 def test_parser_alternative_syntax():
@@ -139,7 +139,7 @@ def test_parser_alternative_syntax():
     f4 = FormulaParser.parse_formula("p -> q")
     assert isinstance(f4, Implies)
     
-    print("✅ Alternative syntax test passed")
+    print("  Alternative syntax test passed")
 
 
 def test_implies_and_iff():
@@ -158,7 +158,7 @@ def test_implies_and_iff():
     assert iff.evaluate(Interpretation({'p': True, 'q': False})) == False
     assert iff.evaluate(Interpretation({'p': True, 'q': True})) == True
     
-    print("✅ Implies and Iff test passed")
+    print("  Implies and Iff test passed")
 
 
 def test_get_variables():
@@ -168,7 +168,7 @@ def test_get_variables():
     
     assert variables == {'p', 'q', 'r'}
     
-    print(f"✅ Variable extraction test passed: {variables}")
+    print(f"  Variable extraction test passed: {variables}")
 
 
 def test_textbook_example():
@@ -191,7 +191,7 @@ def test_textbook_example():
     models = table.get_models()
     print(f"\nNumber of satisfying interpretations: {len(models)}")
     
-    print("✅ Textbook example test passed")
+    print("  Textbook example test passed")
 
 
 if __name__ == "__main__":
@@ -207,4 +207,4 @@ if __name__ == "__main__":
     test_implies_and_iff()
     test_get_variables()
     test_textbook_example()
-    print("\n🎉 All Formula Parser tests passed!")
+    print("\n All Formula Parser tests passed!")

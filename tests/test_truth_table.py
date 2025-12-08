@@ -25,7 +25,7 @@ def test_interpretation_basic():
     assert interp.is_complete(['p', 'q']) == True
     assert interp.is_complete(['p', 'q', 'r']) == False
     
-    print("✅ Basic interpretation test passed")
+    print("  Basic interpretation test passed")
 
 
 def test_interpretation_copy():
@@ -39,7 +39,7 @@ def test_interpretation_copy():
     assert interp1.get('p') == True
     assert interp2.get('p') == False
     
-    print("✅ Interpretation copy test passed")
+    print("  Interpretation copy test passed")
 
 
 def test_interpretation_equality():
@@ -51,7 +51,7 @@ def test_interpretation_equality():
     assert interp1 == interp2
     assert interp1 != interp3
     
-    print("✅ Interpretation equality test passed")
+    print("  Interpretation equality test passed")
 
 
 def test_truth_table_generation():
@@ -70,7 +70,7 @@ def test_truth_table_generation():
     for i, interp in enumerate(interpretations, 1):
         print(f"  {i}. {interp}")
     
-    print("✅ Truth table generation test passed")
+    print("  Truth table generation test passed")
 
 
 def test_truth_table_three_vars():
@@ -81,7 +81,7 @@ def test_truth_table_three_vars():
     # Should have 2^3 = 8 interpretations
     assert len(interpretations) == 8
     
-    print(f"\n✅ Three variable test passed ({len(interpretations)} interpretations)")
+    print(f"\n  Three variable test passed ({len(interpretations)} interpretations)")
 
 
 def test_truth_table_evaluation():
@@ -107,7 +107,7 @@ def test_truth_table_evaluation():
     models = table.get_models()
     assert len(models) == 3
     
-    print("✅ Truth table evaluation test passed")
+    print("  Truth table evaluation test passed")
 
 
 def test_partial_interpretation():
@@ -126,7 +126,7 @@ def test_partial_interpretation():
     # Original should be unchanged
     assert partial.is_defined_for('q') == False
     
-    print("✅ Partial interpretation test passed")
+    print("  Partial interpretation test passed")
 
 
 def test_truth_table_complex():
@@ -147,7 +147,7 @@ def test_truth_table_complex():
     
     assert table.is_satisfiable() == True
     
-    print("✅ Complex formula test passed")
+    print("  Complex formula test passed")
 
 
 if __name__ == "__main__":
@@ -160,4 +160,4 @@ if __name__ == "__main__":
     test_truth_table_evaluation()
     test_partial_interpretation()
     test_truth_table_complex()
-    print("\n🎉 All Truth Table tests passed!")
+    print("\n All Truth Table tests passed!")

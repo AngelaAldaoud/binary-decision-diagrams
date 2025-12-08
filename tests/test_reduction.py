@@ -28,7 +28,7 @@ def test_reduce_simple():
     assert bdd.evaluate(Interpretation({'p': True})) == True
     assert bdd.evaluate(Interpretation({'p': False})) == False
     
-    print("✅ Simple reduction test passed")
+    print("  Simple reduction test passed")
 
 
 def test_reduce_textbook_example():
@@ -65,7 +65,7 @@ def test_reduce_textbook_example():
     # Root (p), left child (q), one (r) node, and 2 terminals
     assert bdd.count_nodes() <= 5  # Should be significantly smaller than 9
     
-    print("✅ Textbook example reduction test passed")
+    print("  Textbook example reduction test passed")
 
 
 def test_reduce_tautology():
@@ -90,7 +90,7 @@ def test_reduce_tautology():
     assert bdd.evaluate(Interpretation({'p': True})) == True
     assert bdd.evaluate(Interpretation({'p': False})) == True
     
-    print("✅ Tautology reduction test passed")
+    print("  Tautology reduction test passed")
 
 
 def test_reduce_contradiction():
@@ -115,7 +115,7 @@ def test_reduce_contradiction():
     assert bdd.evaluate(Interpretation({'p': True})) == False
     assert bdd.evaluate(Interpretation({'p': False})) == False
     
-    print("✅ Contradiction reduction test passed")
+    print("  Contradiction reduction test passed")
 
 
 def test_reduction_preserves_semantics():
@@ -149,7 +149,7 @@ def test_reduction_preserves_semantics():
     
     assert mismatches == 0, f"Found {mismatches} mismatches!"
     
-    print("✅ Semantics preservation test passed")
+    print("  Semantics preservation test passed")
 
 
 def test_is_reduced_check():
@@ -169,7 +169,7 @@ def test_is_reduced_check():
     
     assert bdd.is_reduced() == True
     
-    print("✅ is_reduced() check test passed")
+    print("  is_reduced() check test passed")
 
 
 def test_complex_formula():
@@ -193,7 +193,7 @@ def test_complex_formula():
     
     assert bdd.is_reduced() == True
     
-    print("✅ Complex formula reduction test passed")
+    print("  Complex formula reduction test passed")
 
 
 def test_xor_formula():
@@ -222,7 +222,7 @@ def test_xor_formula():
     assert bdd.evaluate(Interpretation({'p': False, 'q': True, 'r': True})) == False # 2 trues (even)
     assert bdd.evaluate(Interpretation({'p': True, 'q': False, 'r': False})) == True  # 1 true (odd)
     
-    print("✅ XOR formula reduction test passed")
+    print("  XOR formula reduction test passed")
 
 
 if __name__ == "__main__":
@@ -239,4 +239,4 @@ if __name__ == "__main__":
     test_xor_formula()
     
     print("\n" + "="*60)
-    print("🎉 All BDD Reduction tests passed!")
+    print(" All BDD Reduction tests passed!")

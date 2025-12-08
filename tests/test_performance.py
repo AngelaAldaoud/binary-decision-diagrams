@@ -243,7 +243,7 @@ def run_all_benchmarks():
     for r in results:
         print(f"{r['name']:<30} {r['total_time']*1000:>10.2f} ms  {r['nodes_before']:>4} → {r['nodes_after']:>4}")
     
-    print("\n✅ All benchmarks completed!")
+    print("\n  All benchmarks completed!")
 
 
 if __name__ == "__main__":

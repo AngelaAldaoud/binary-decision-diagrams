@@ -28,7 +28,7 @@ def test_simple_variable():
     assert bdd.evaluate(Interpretation({'p': True})) == True
     assert bdd.evaluate(Interpretation({'p': False})) == False
     
-    print(f"✅ Simple variable test passed: {bdd}")
+    print(f" Simple variable test passed: {bdd}")
 
 
 def test_simple_and():
@@ -51,7 +51,7 @@ def test_simple_and():
     assert bdd.is_satisfiable() == True
     assert bdd.is_valid() == False
     
-    print("✅ Simple AND test passed")
+    print(" Simple AND test passed")
 
 
 def test_simple_or():
@@ -67,7 +67,7 @@ def test_simple_or():
     assert bdd.evaluate(Interpretation({'p': True, 'q': False})) == True
     assert bdd.evaluate(Interpretation({'p': True, 'q': True})) == True
     
-    print("✅ Simple OR test passed")
+    print("Simple OR test passed")
 
 
 def test_textbook_formula():
@@ -99,7 +99,7 @@ def test_textbook_formula():
     assert bdd.is_satisfiable() == True
     assert bdd.is_valid() == False
     
-    print("✅ Textbook formula test passed")
+    print(" Textbook formula test passed")
 
 
 def test_tautology():
@@ -118,7 +118,7 @@ def test_tautology():
     assert bdd.is_valid() == True
     assert bdd.is_satisfiable() == True
     
-    print("✅ Tautology test passed")
+    print(" Tautology test passed")
 
 
 def test_contradiction():
@@ -137,7 +137,7 @@ def test_contradiction():
     assert bdd.is_satisfiable() == False
     assert bdd.is_valid() == False
     
-    print("✅ Contradiction test passed")
+    print(" Contradiction test passed")
 
 
 def test_variable_ordering():
@@ -154,7 +154,7 @@ def test_variable_ordering():
     interp = Interpretation({'p': True, 'q': False, 'r': True})
     assert bdd1.evaluate(interp) == bdd2.evaluate(interp)
     
-    print("✅ Variable ordering test passed")
+    print("Variable ordering test passed")
 
 
 def test_create_from_string():
@@ -164,7 +164,7 @@ def test_create_from_string():
     assert bdd.evaluate(Interpretation({'p': True, 'q': True})) == True
     assert bdd.evaluate(Interpretation({'p': True, 'q': False})) == False
     
-    print("✅ Create from string test passed")
+    print("Create from string test passed")
 
 
 def test_node_structure():
@@ -185,7 +185,7 @@ def test_node_structure():
     for i, node in enumerate(all_nodes, 1):
         print(f"  {i}. {node}")
     
-    print("✅ Node structure test passed")
+    print("Node structure test passed")
 
 
 if __name__ == "__main__":
@@ -201,4 +201,4 @@ if __name__ == "__main__":
     test_create_from_string()
     test_node_structure()
     print("\n" + "=" * 60)
-    print("🎉 All BDD Construction tests passed!")
+    print(" All BDD Construction tests passed!")
